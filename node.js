@@ -41,10 +41,10 @@ app.post("/upload", upload.single("image"), (req, res) => {
   }
 
   const name = req.body.name || "default"; // Lấy name từ form
-  console.log("Tên nhận được:", name);
+  console.log("Mã số sinh viện nhận được:", name);
 
   // Tạo đường dẫn lưu file
-  const fileName = `image_${Date.now()}_${name.replace(/\s+/g, "_")}.jpg`;
+  const fileName = `image_${(new Date().toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' })).replace(/[,: /]/g, '_')}_${name.replace(/\s+/g, "_")}.jpg`;
   const filePath = path.join(__dirname, "uploads", fileName);
 
   // Lưu file từ bộ nhớ vào thư mục
